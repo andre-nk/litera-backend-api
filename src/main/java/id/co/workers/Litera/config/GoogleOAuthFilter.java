@@ -53,7 +53,7 @@ public class GoogleOAuthFilter implements Filter {
       } else {
         CustomErrorResponse errorResponse = new CustomErrorResponse(
           HttpStatus.UNAUTHORIZED.value(),
-          "Unauthorized"
+          "Unauthorized ID Token"
         );
 
         response.setStatus(HttpStatus.UNAUTHORIZED.value());
