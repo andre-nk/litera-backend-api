@@ -1,0 +1,40 @@
+{
+  "partId": "0",
+  "mimeType": "multipart/alternative",
+  "filename": "",
+  "headers": [
+    {
+      "name": "Content-Type",
+      "value": "multipart/alternative; boundary=enmime-15c89cad-e930-4500-af52-df613f95dd2e"
+    }
+  ],
+  "body": { "size": 0 },
+  "parts": [
+    {
+      "partId": "0.0",
+      "mimeType": "text/plain",
+      "filename": "",
+      "headers": [
+        { "name": "Content-Transfer-Encoding", "value": "quoted-printable" },
+        { "name": "Content-Type", "value": "text/plain; charset=utf-8" }
+      ],
+      "body": {
+        "size": 274,
+        "data": "8J-RiyBBTkRSRUFTIE5PVE9LVVNVTU8sDQoNCkJlcmlrdXQgdGVybGFtcGlyIExhcG9yYW4gQnVsYW5hbiBrYW11IHVudHVrIHBlcmlvZGUgSmFudWFyaSAyMDI0Lg0KDQpUZXJpbWEga2FzaWggdGVsYWggbWVtcGVyY2F5YWthbiBTdG9ja2JpdCBzZWJhZ2FpIHRlbWFuIGludmVzdGFzaSBrYW11Lg0KDQpCaWxhIGFkYSBwZXJ0YW55YWFuLCBzaWxhaGthbiBodWJ1bmdpIGthbWkgcGFkYSBlbWFpbCBzdXBwb3J0QHN0b2NrYml0LmNvbSANCg0KVGVyaW1hIGthc2loDQpTdG9ja2JpdA=="
+      }
+    },
+    {
+      "partId": "0.1",
+      "mimeType": "text/html",
+      "filename": "",
+      "headers": [
+        { "name": "Content-Transfer-Encoding", "value": "quoted-printable" },
+        { "name": "Content-Type", "value": "text/html; charset=utf-8" }
+      ],
+      "body": {
+        "size": 383,
+        "data": "PGh0bWw-DQrwn5GLIEFORFJFQVMgTk9UT0tVU1VNTyw8YnIvPjxici8-DQpCZXJpa3V0IHRlcmxhbXBpciBsYXBvcmFuIGJ1bGFuYW4ga2FtdSB1bnR1ayBwZXJpb2RlIDxiPkphbnVhcmkgMjAyNDwvYj4uPGJyLz48YnIvPg0KVGVyaW1hIGthc2loIHRlbGFoIG1lbXBlcmNheWFrYW4gU3RvY2tiaXQgc2ViYWdhaSB0ZW1hbiBpbnZlc3Rhc2kga2FtdS48YnIvPjxici8-DQpCaWxhIGFkYSBwZXJ0YW55YWFuLCBzaWxhaGthbiBodWJ1bmdpIGthbWkgcGFkYSBlbWFpbCA8YSBocmVmPSJtYWlsdG86c3VwcG9ydEBzdG9ja2JpdC5jb20iPnN1cHBvcnRAc3RvY2tiaXQuY29tPC9hPjxici8-PGJyLz4NClRlcmltYSBrYXNpaDxici8-DQo8Yj5TdG9ja2JpdDwvYj4NCjwvaHRtbD4="
+      }
+    }
+  ]
+}

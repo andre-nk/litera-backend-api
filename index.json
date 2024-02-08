@@ -1,448 +1,4 @@
 {
-<<<<<<< HEAD
-    "openapi": "3.0.0",
-    "info": {
-        "version": "1.0.0",
-        "title": "Litera",
-        "description": "Server-side application for Litera"
-    },
-    "servers": [
-        {
-            "url": "api.litera.workers.id/v1/"
-        }
-    ],
-    "paths": {
-        "/articles": {
-            "get": {
-                "summary": "Get all articles",
-                "operationId": "getArticles",
-                "tags": [
-                    "articles"
-                ],
-                "security": [
-                    {
-                        "ApiKey": []
-                    }
-                ],
-                "parameters": [
-                    {
-                        "name": "limit",
-                        "in": "query",
-                        "description": "The maximum number of articles to return",
-                        "required": false,
-                        "schema": {
-                            "type": "integer",
-                            "default": 10
-                        }
-                    },
-                    {
-                        "name": "offset",
-                        "in": "query",
-                        "description": "The number of articles to skip",
-                        "required": false,
-                        "schema": {
-                            "type": "integer",
-                            "default": 0
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "A list of articles",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/components/schemas/Article"
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "headers": {
-                            "WWW-Authenticate": {
-                                "schema": {
-                                    "type": "string"
-                                }
-                            }
-                        },
-                        "$ref": "#/components/responses/Unauthorized"
-                    },
-                    "500": {
-                        "$ref": "#/components/responses/InternalServerError"
-                    }
-                }
-            }
-        },
-        "/articles/{articleID}": {
-            "get": {
-                "summary": "Get an article",
-                "operationId": "getArticle",
-                "tags": [
-                    "articles"
-                ],
-                "security": [
-                    {
-                        "ApiKey": []
-                    }
-                ],
-                "parameters": [
-                    {
-                        "name": "articleID",
-                        "in": "path",
-                        "description": "The ID of the article to get",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/components/schemas/ArticleID"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "The article",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Article"
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "$ref": "#/components/responses/Unauthorized"
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/NotFound"
-                    },
-                    "500": {
-                        "$ref": "#/components/responses/InternalServerError"
-                    }
-                }
-            }
-        },
-        "/articles/{articleID}/annotate": {
-            "post": {
-                "summary": "Create an annotation",
-                "operationId": "createAnnotation",
-                "tags": [
-                    "annotations"
-                ],
-                "security": [
-                    {
-                        "ApiKey": []
-                    }
-                ],
-                "parameters": [
-                    {
-                        "name": "articleID",
-                        "in": "path",
-                        "description": "The ID of the article to create an annotation for",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/components/schemas/ArticleID"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "description": "The annotation to create",
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/Annotation"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "The created annotation",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Annotation"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "$ref": "#/components/responses/BadRequest"
-                    },
-                    "401": {
-                        "$ref": "#/components/responses/Unauthorized"
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/NotFound"
-                    },
-                    "500": {
-                        "$ref": "#/components/responses/InternalServerError"
-                    }
-                }
-            }
-        },
-        "/annotations/{annotationID}": {
-            "get": {
-                "summary": "Get an annotation",
-                "operationId": "getAnnotation",
-                "tags": [
-                    "annotations"
-                ],
-                "security": [
-                    {
-                        "ApiKey": []
-                    }
-                ],
-                "parameters": [
-                    {
-                        "name": "annotationID",
-                        "in": "path",
-                        "description": "The ID of the annotation to get",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/components/schemas/AnnotationID"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "The annotation",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Annotation"
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "$ref": "#/components/responses/Unauthorized"
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/NotFound"
-                    },
-                    "500": {
-                        "$ref": "#/components/responses/InternalServerError"
-                    }
-                }
-            },
-            "put": {
-                "summary": "Update an annotation",
-                "operationId": "updateAnnotation",
-                "tags": [
-                    "annotations"
-                ],
-                "security": [
-                    {
-                        "ApiKey": []
-                    }
-                ],
-                "parameters": [
-                    {
-                        "name": "annotationID",
-                        "in": "path",
-                        "description": "The ID of the annotation to update",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/components/schemas/AnnotationID"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "description": "The annotation to update",
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/Annotation"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "The updated annotation",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Annotation"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "$ref": "#/components/responses/BadRequest"
-                    },
-                    "401": {
-                        "$ref": "#/components/responses/Unauthorized"
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/NotFound"
-                    },
-                    "500": {
-                        "$ref": "#/components/responses/InternalServerError"
-                    }
-                }
-            }
-        }
-    },
-    "components": {
-        "schemas": {
-            "ArticleID": {
-                "description": "The unique identifier of an article",
-                "type": "string"
-            },
-            "Article": {
-                "type": "object",
-                "required": [
-                    "id",
-                    "headers",
-                    "title",
-                    "content"
-                ],
-                "properties": {
-                    "id": {
-                        "$ref": "#/components/schemas/ArticleID"
-                    },
-                    "author": {
-                        "type": "string"
-                    },
-                    "title": {
-                        "type": "string"
-                    },
-                    "content": {
-                        "type": "string"
-                    },
-                    "attachments": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    },
-                    "sentAt": {
-                        "type": "string",
-                        "format": "date-time"
-                    }
-                }
-            },
-            "AnnotationID": {
-                "description": "The unique identifier of an annotation",
-                "type": "string"
-            },
-            "AnnotationType": {
-                "description": "The type of an annotation",
-                "type": "string",
-                "enum": [
-                    "highlight",
-                    "note"
-                ]
-            },
-            "Annotation": {
-                "type": "object",
-                "required": [
-                    "id",
-                    "articleID",
-                    "type",
-                    "quote",
-                    "quoteIndex",
-                    "createdAt"
-                ],
-                "properties": {
-                    "id": {
-                        "$ref": "#/components/schemas/AnnotationID"
-                    },
-                    "articleID": {
-                        "$ref": "#/components/schemas/ArticleID"
-                    },
-                    "type": {
-                        "$ref": "#/components/schemas/AnnotationType"
-                    },
-                    "quote": {
-                        "type": "string"
-                    },
-                    "quoteIndex": {
-                        "type": "integer"
-                    },
-                    "note": {
-                        "type": "string"
-                    },
-                    "createdAt": {
-                        "type": "string",
-                        "format": "date-time"
-                    }
-                }
-            },
-            "Error": {
-                "type": "object",
-                "required": [
-                    "message"
-                ],
-                "properties": {
-                    "message": {
-                        "description": "A human readable error message",
-                        "type": "string"
-                    }
-                }
-            }
-        },
-        "responses": {
-            "BadRequest": {
-                "description": "The request was malformed",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "#/components/schemas/Error"
-                        }
-                    }
-                }
-            },
-            "Unauthorized": {
-                "description": "The request was not authorized",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "#/components/schemas/Error"
-                        }
-                    }
-                }
-            },
-            "NotFound": {
-                "description": "The requested resource was not found",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "#/components/schemas/Error"
-                        }
-                    }
-                }
-            },
-            "InternalServerError": {
-                "description": "An internal server error occurred",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "#/components/schemas/Error"
-                        }
-                    }
-                }
-            }
-        },
-        "securitySchemes": {
-            "accessToken": {
-                "type": "apiKey",
-                "in": "header",
-                "name": "accessToken"
-            }
-        }
-    },
-    "security": [
-        {
-            "ApiKey": []
-        }
-    ]
-}
-=======
   "openapi": "3.0.0",
   "info": {
     "version": "1.0.0",
@@ -722,9 +278,22 @@
         "description": "The unique identifier of an article",
         "type": "string"
       },
+      "Author": {
+        "description": "The author of an article",
+        "type": "object",
+        "required": ["name", "email"],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          }
+        }
+      },
       "Article": {
         "type": "object",
-        "required": ["id", "headers", "title", "content"],
+        "required": ["id", "author", "title", "content", "sentAt"],
         "properties": {
           "id": {
             "$ref": "#/components/schemas/ArticleID"
@@ -735,8 +304,17 @@
           "title": {
             "type": "string"
           },
-          "content": {
-            "type": "string"
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "contents": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "attachments": {
             "type": "array",
@@ -861,4 +439,3 @@
     }
   ]
 }
->>>>>>> 455e0cb (:sparkles: Article Controller Barebone)
